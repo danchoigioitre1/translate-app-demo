@@ -1,0 +1,14 @@
+@import url("./layouts/common/TheMain.css");
+@import url("./layouts/page/HomePage.css");
+@import url('./layouts/page/services/TextTranslatePage.css');
+@import url('./layouts/page/services/Voicecommunication.css');
+body {
+    margin: 0;
+    box-sizing: border-box;
+    background-color: var(--background-color);
+    font-size: 14px;
+}
+
+:root {
+  --variable: #000000;
+}
