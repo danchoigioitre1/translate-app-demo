@@ -33,13 +33,13 @@
         </div>
 
         <div class="button-controller-group">
-            <button class="player-button" @click="translateVoice(persons.firstPerson)">
+            <button class="player-button" @click="translateVoice(persons.firstPerson)" :class="{'border-effect': current.speaker?.id === 1}" >
                 <span>{{persons.firstPerson.name}}</span>
             </button>
             <button class="start-com-button" @click="toggleRecording">
                 <div :class="!current.isRecording ? 'start-effect' : 'stop-effect'"></div>
             </button>  
-            <button class="player-button" @click="translateVoice(persons.secondPerson)">
+            <button class="player-button" @click="translateVoice(persons.secondPerson)" :class="{'border-effect': current.speaker?.id === 2}">
                 <span>{{persons.secondPerson.name}}</span>
             </button>         
         </div>
@@ -64,7 +64,7 @@ export default {
         })
         const current = reactive({
             languageList: store.getters.supportedLanguages.map(item => ({text: item.displayName, value: item.languageCode })),
-            targetText: '',
+            speaker: '',
             recording: null,
             isRecording: false,
             transcript: "",
@@ -86,27 +86,27 @@ export default {
         };
 
         const createRecording = (speaker) => {
-            current.recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-            current.recognition.lang = speaker.language;
-            current.recognition.continuous = true;
-            current.recognition.interimResults = false;
+            current.recording = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            current.recording.lang = speaker.language;
+            current.recording.continuous = true;
+            current.recording.interimResults = false;
 
-            current.recognition.onresult = (event) => {
+            current.recording.onresult = (event) => {
                 current.transcript = event.results[event.results.length - 1][0].transcript;
                 let text = event.results[event.results.length - 1][0].transcript;
                 let target = getOtherPerson(speaker);
                 translate(speaker, text, speaker.language, target.language)
             };
 
-            current.recognition.onend = () => {
+            current.recording.onend = () => {
                 console.log("END RECODING !!!");
                 
             };
 
-            current.recognition.onStart = () => {
+            current.recording.onStart = () => {
             };
 
-            current.recognition.start();
+            current.recording.start();
         }
 
         const decodeHTMLEntities = (text) => {
@@ -153,7 +153,10 @@ export default {
 
         const toggleRecording = () => {
             current.isRecording = !current.isRecording
-            if(!current.isRecording && current.recording) current.recognition.stop();
+                    if(!current.isRecording) {
+                        if(current.recording) current.recording.stop();
+                        current.speaker = null;
+                }
         }
 
         const translateVoice = (speaker) => {
@@ -161,9 +164,20 @@ export default {
                 showToast("Hãy ấn nút bắt đầu !!!")
                 return
             }
-            if (current.recognition) current.recognition.stop();
-            showToast(speaker.name)
-            createRecording(speaker);
+            if (current.recording){ 
+                current.recording.stop();
+                if(!current.speaker || current.speaker?.id != speaker.id){
+                    current.speaker = speaker;
+                    showToast(speaker.name)
+                    createRecording(speaker);
+                } else {
+                    current.speaker = null;
+                }
+            } else {
+                    current.speaker = speaker;
+                    showToast(speaker.name)
+                    createRecording(speaker);
+            }
         }
         
 

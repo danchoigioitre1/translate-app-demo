@@ -5,8 +5,8 @@ const vi = {
         "voiceService": "Dịch lời nói",
         "voiceCom": "Giao tiếp",
         "vietnam": "Tiếng Việt",
-        "english": "Tiếng Anh",
-        "chinese": "Tiếng Trung",
+        "english": "English",
+        "chinese": "中文",
     }
 }
 export default vi

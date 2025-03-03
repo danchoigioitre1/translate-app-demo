@@ -5,7 +5,7 @@ const zhCN = {
         "voiceService": "语音翻译",
         "voiceCom": "交流",
         "vietnam": "越南语",
-        "english": "英语",
+        "english": "English",
         "chinese": "中文"
     }
 }

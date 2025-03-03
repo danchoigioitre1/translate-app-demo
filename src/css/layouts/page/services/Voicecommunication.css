@@ -48,3 +48,6 @@
 .right-message{
     align-self: flex-end;
 }
+.border-effect{
+    border: 2px solid red ;
+}

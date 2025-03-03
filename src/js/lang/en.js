@@ -6,7 +6,7 @@ const en = {
         "voiceCom": "Communication",
         "vietnam": "Vietnamese",
         "english": "English",
-        "chinese": "Chinese"
+        "chinese": "中文"
     }
 }
 export default en

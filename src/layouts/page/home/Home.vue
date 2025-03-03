@@ -36,7 +36,6 @@ import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import PATH from "@/router/path";
 import { optionsLangue } from "@/js/lang";
-// import getAccessGoogleToken from "@/js/service/getToken";
 export default {
   name: "HomePage",
   setup() {
@@ -48,6 +47,18 @@ export default {
         language: language ?? 'vi',
         languageList: optionsLangue(t, computed)
     })
+
+    onMounted(async () => {
+        try {
+          // const token = await getAccessGoogleToken();
+          // console.log("Token:", token); 
+          
+          store.dispatch('getSupportedLanguagesList', current.language);
+        } catch (error) {
+          console.error("Lỗi lấy token:", error);
+        }}
+      )
+
     const tabList = ref([
         {
           name: "home",
@@ -97,16 +108,7 @@ export default {
         store.dispatch('getSupportedLanguagesList', language == 'zhCN' ? 'zh-CN' : language);
     }
 
-    onMounted(async () => {
-        try {
-          // const token = await getAccessGoogleToken();
-          // console.log("Token:", token); 
-          
-          store.dispatch('getSupportedLanguagesList', current.language);
-        } catch (error) {
-          console.error("Lỗi lấy token:", error);
-        }}
-      )
+
 
     return { 
       t, 
