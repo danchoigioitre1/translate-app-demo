@@ -3,15 +3,14 @@ import {
 } from "@/js/service/api";
 
 export const actions = {
-    updateName({ commit }) {
-      commit("setName", "Nguyen viet anh");
+    updateName({ commit }, name) {
+      commit("setUsername", name);
     },
     
     getSupportedLanguagesList({ commit }, target){  
       getSupportedLanguages(target).then(
         res => {
           if(res.status == 200){
-            console.log(res);
             commit("setSupportedLanguages", res.data.languages)
           }
         }
@@ -25,5 +24,9 @@ export const actions = {
 
     setCommunicationHistory({commit}, params){
       commit("setCommunicationHistory", params)
+    },
+
+    setWebsocketHistory({commit}, params){
+      commit("setWebsocketHistory", params)
     },
 }

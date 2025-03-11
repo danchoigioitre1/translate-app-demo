@@ -1,11 +1,10 @@
-
-
-  import axios from "axios";
-
+import axios from "axios";
+import {GET_WEBSOCKET_CLIENTS, SEND_MESSAGE } from './endPoint'
 export const API_GG_KEY = "AIzaSyBL2f2itaT8fddnFJ4ONhTER2xBfOLl0XQ"
 export const PROJECI_ID = "sustained-edge-451302-b1"
 export const GG_TRANSLATE_URL = "https://translate.googleapis.com/v3"
-export const TOKEN = "ya29.c.c0ASRK0GY4hlzLUN1yV-SNoStoC8E780LDZ1bN9MkBJFOlIedxD06nPdA-7g0ssjiryV66NfecI5XiCFZKfCylWtXXwUsUMuIYNoJMzzVxPvWGaFsTP4Vo_bz857qy1qbYoK4mPp0n5a8q6yAxAzEw5DnollkE7fUv8ZoRghu4HpE5NCwzIVGzpZlSfnVnFVMxkCX6nX8gid_s9Qch2RLoabl05Iu6RSqHpFy_lDnEVt2TkO5We8S0krV0uqpjqBWk2na0gv5Gl-ABE0uOXj-_oGHd_DE449gTFzhIy4jTGVonxK3HDeF8B7hk029CgEloDkWo7ALZx5ZJXCSio0s3nZeqSw83iodBU9L3xqfbaUdLR1iwbvA3eE-AE385Aj1xUhZeX_S_7lwloeflJuRiZe2aZ54u5vOdkj9481dy0dvjxcsM0n3vuYZXQh-aR7ctgBpV_cgbvIa7srk64jzQl7na4_laI3hbkM77tycm4jjpM2ynyI3nWR0buXVhc5yyz66mj6yO2y0rS7_ro3ySY8-xR5fZzroageXvI7cxfwIRBpM3yM5ByIF14oir4uBpBcYnX1IXYeI7a3F1aR8b9zo4dRtsXySByzBZ4FlRjSfI3JqFulJlUwha0vg9Iga0B86WJo4Xt2r8ds5_4Fyo4tuxb1ev1Ov_-8l_XvMq13gbx2wkaWOgeYs7tZ6Y1maBSWvskX_d8rpuzUnFfqXgUe11OZ68QYs4Y0VRf5F8Yqu2JwuiVMBtmUJfjq5o3qfFXgqzc14W6ugXbZkny4z6c7UugUoUYBOVviv_07OblZvnsgyFjY73X7X_ue305dp-VkUw0nZV-hSyXjjx8YUQWdeMU8maaSa-Isd5O-_0suu_f8u2jt-lQ9puq5paFhiZXht-eqSwXtuxB0Urxjhh6e4hxfXvdkF1ca6VrgFY6o6p4Qqks6j8xezb9VXlizYZtbRyupxy-tf5cVURlygQwQZwr3uze-8h4QpJdvyes8pQfFn-B8Is5d-"
+export const LOCAL_HOST = "http://localhost:9901"
+export const TOKEN = "ya29.c.c0ASRK0Ga3ojho-CsyoSsuFFOFt_dBmE9nH5Awii7QxsZ5YlbnwhE79_zVB5fZNfLFihJ7pvh36-g2a8KR7H0nimeBPy1n58gag5HEMr3C5UTVOFyoiGpPtGMjB7tq5YNbBk2xMad8LIaxE3R3gii9ra3POk7xv1D36ElPqtBJ4hcohD0qLAEj9ER0lSW8bt-ELmAq4wTRjNM3b2BQApg_YAzslNqEGT26tAkWQMIgLgmsa9IEKZ9d1F0c92YcZmm4zFjKurGzda7qug6YAnx0CBtscxUC1o9v19K_50XnDb2ZWqV5rQQLgBKw_c0Iw8dJHnml7j9rsj9yUAbYQjAhlDtkbWazq8ij3NMfbHnKjVVb_NYB1oKZZekH384AxvqbaFQBsYQq_p-qoUxaxOj8tp-3044api15g1Fpk9Ba3pzJdSmnXl1_1MthoBOblbWWqj5gFI_UFdtSMt_2muv1rUBt0nukxmxbiIVgJ4xBr5w5sYYppO8mWMs24Xnnjnp38dF8p7q6eYczXtSY-yzsmapd_FgBQcezaouQMowyiO2wsRYwu98ORp_UI3sneYdz-7yjJ7Ojrn4lqedaJ9d7lg4FWsVm6MkbjSSczFIheV46Jyxcewoe-eUt5oX6XFvOnXQW1BdIqZZYU52dwa2pv8W3QYcr9BraOR0jIeo7_BepMavWxhrxdSxhRMy44qfYe6qvxcnSS2wrxgW-gZyq6S675n9cXSuxbtm-QwOk5mIo2VeQzv8uibd0wv0ibRy-rIqRyOg0wneXM_Fn9vQp6YOVWj589Bjfhfe9BOuBF5xFxsJI6J_7jF0lYyl5g7d_v94Xzr9xwVOj4ay73XcBMqvbJejykW2ahtMjo3xeYRsW9lmVzntlpZbgY9UtMlW38ab-lqSgxZUBW61qVS53q7gwQVVm0ehgIcWrYRxBFUz46o8fwumcXS_zWB50l9-qQnRfRJ23dae3Mfiq_vq2R2XrZu5Wkqtu2IWukkU5dS9sQOpQ8OmvBs9"
 export async function textTranslate(params){
     const {text, sourceLang, targetLang} = params
     const response = await axios.post(`${GG_TRANSLATE_URL}/projects/${PROJECI_ID}:translateText`, 
@@ -52,4 +51,31 @@ export async function detectLanguage(params) {
       }
     );
       return response
+}
+
+export async function getWebsocketClients(){
+  let connectionList = []
+  const response = await axios.get(`${LOCAL_HOST}/${GET_WEBSOCKET_CLIENTS}`);
+  if(response.status === 200){
+      connectionList = Object.entries(response.data.data).map(([uid, user]) => ({
+        uid,
+        username: user.userName,
+        createTime: user.createTime
+    }))
+  } else {
+      console.log("Error fetching websocket clients")
+  }
+  return connectionList;
+}
+
+export async function sendMessage(params){
+  // {from, to, sourceLang, sourceText, targetText, targetLang} = params
+  const queryString = new URLSearchParams(params).toString();
+  const response = await axios.get(`${LOCAL_HOST}/${SEND_MESSAGE}?${queryString}`);
+  if(response.status === 200){
+      console.log(response);
+      
+  } else {
+      console.log("Error fetching websocket clients")
+  }
 }

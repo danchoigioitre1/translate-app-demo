@@ -33,13 +33,13 @@
 import { ref, onMounted, reactive, computed } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
-import { useStore } from "vuex";
+// import { useStore } from "vuex";
 import PATH from "@/router/path";
 import { optionsLangue } from "@/js/lang";
 export default {
   name: "HomePage",
   setup() {
-    const store = useStore();
+    // const store = useStore();
     const { t, locale } = useI18n();
     const router = useRouter()
     const language = localStorage.getItem("mobile-language")
@@ -49,14 +49,12 @@ export default {
     })
 
     onMounted(async () => {
-        try {
-          // const token = await getAccessGoogleToken();
-          // console.log("Token:", token); 
-          
-          store.dispatch('getSupportedLanguagesList', current.language);
-        } catch (error) {
-          console.error("Lỗi lấy token:", error);
-        }}
+          // try {
+          //   store.dispatch('getSupportedLanguagesList', current.language);
+          // } catch (error) {
+          //   console.error("Lỗi lấy token:", error);
+          // }
+        }
       )
 
     const tabList = ref([
@@ -94,6 +92,10 @@ export default {
         {
           title: computed(() => t('home.voiceCom')),
           path: PATH.SERVICE.VOICE_COMMUNICATION
+        },
+        {
+          title: computed(() => t('home.voiceCom2divides')),
+          path: PATH.SERVICE.VOICE_COMMUNICATION_TWO_DEVICES
         }
     ]);
 
@@ -105,7 +107,7 @@ export default {
         localStorage.setItem('mobile-language', language)
         
         locale.value  = language;
-        store.dispatch('getSupportedLanguagesList', language == 'zhCN' ? 'zh-CN' : language);
+        // store.dispatch('getSupportedLanguagesList', language == 'zhCN' ? 'zh-CN' : language);
     }
 
 

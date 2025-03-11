@@ -7,7 +7,9 @@ const routers = [
   { path: PATH.SERVICE.VOICE_TRANSLATION, component: () => import("@/layouts/page/services/VoiceTranslation.vue"), name: "VoiceTranslationRouter" },
   { path: PATH.SERVICE.TEXT_TRANSLATION, component: () => import("@/layouts/page/services/TextTranslation.vue"), name: "TextTranslationRouter" },
   { path: PATH.SERVICE.VOICE_COMMUNICATION, component: () => import("@/layouts/page/services/VoiceCommunication.vue"), name: "VoiceCommunicationRouter" },
-  // { path: "/classroom", component: ClassHome, name: "ClassHomeRouter" },
+  { path: PATH.SERVICE.VOICE_COMMUNICATION_TWO_DEVICES, component: () => import("@/layouts/page/services/VoiceCommunicationTwoDevices.vue"), name: "VoiceCommunicationTwoDevicesRouter" },
+  // { 
+  // path: "/classroom", component: ClassHome, name: "ClassHomeRouter" },
   // {
   //   path: "/storage",
   //   component: StorageHome,

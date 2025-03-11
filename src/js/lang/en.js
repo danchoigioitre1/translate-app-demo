@@ -4,6 +4,7 @@ const en = {
         "textService": "Text Translation",
         "voiceService": "Speech Translation",
         "voiceCom": "Communication",
+        "voiceCom2divides": "Communication on 2 devices",
         "vietnam": "Vietnamese",
         "english": "English",
         "chinese": "中文"

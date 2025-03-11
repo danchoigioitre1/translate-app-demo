@@ -3,7 +3,8 @@ require('dotenv').config();
 
 async function getAccessGoogleToken() {
   const auth = new GoogleAuth({
-  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+  // keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+  keyFilename: "D:/YueYa/translation-app-demo/config/service-account.json",
   scopes: "https://www.googleapis.com/auth/cloud-platform"
 });
 

@@ -1,6 +1,6 @@
 export const mutations = {
-    setName(state, name) {
-      state.name = name;
+    setUsername(state, username) {
+      state.username = username;
     },
 
     setSupportedLanguages(state, list){
@@ -13,6 +13,10 @@ export const mutations = {
 
     setCommunicationHistory(state, payload){
       state.communicationHistory = [...state.communicationHistory, payload]
-    }
+    },
+
+    setWebsocketHistory(state, payload){
+      state.websocketHistory = [...state.websocketHistory, payload]
+    },
 }
   
