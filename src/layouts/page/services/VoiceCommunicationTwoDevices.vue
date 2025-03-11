@@ -234,7 +234,7 @@ export default {
                 openWebsocket()
                 current.step = 2;
             } else {
-                showToast("Username already exists !!!")
+                showToast("Username already exists !!")
             }
            
         };
