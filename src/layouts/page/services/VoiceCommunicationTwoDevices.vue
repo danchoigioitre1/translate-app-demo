@@ -242,8 +242,8 @@ export default {
         const openWebsocket = () => {
             const wsUrl = `ws://localhost:9901/websocket/${current.username}`;
             const socket = new WebSocket(wsUrl);
-            socket.onopen = function(e,e2) {
-                console.log(e, e2);
+            socket.onopen = function(e) {
+                console.log(e);
             };
 
             socket.onmessage = function(event) {

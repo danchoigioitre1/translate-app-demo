@@ -96,8 +96,16 @@ export default {
         {
           title: computed(() => t('home.voiceCom2divides')),
           path: PATH.SERVICE.VOICE_COMMUNICATION_TWO_DEVICES
+        },
+        {
+          title: computed(() => "gọi video"),
+          path: PATH.SERVICE.VIDEO_CALL
+        },
+        {
+          title: computed(() => "trò chuyện bằng giọng nói"),
+          path: PATH.SERVICE.VOICE_CALL
         }
-    ]);
+      ]);
 
     const goToService = (service) => {
         router.push(service.path)

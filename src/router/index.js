@@ -8,6 +8,9 @@ const routers = [
   { path: PATH.SERVICE.TEXT_TRANSLATION, component: () => import("@/layouts/page/services/TextTranslation.vue"), name: "TextTranslationRouter" },
   { path: PATH.SERVICE.VOICE_COMMUNICATION, component: () => import("@/layouts/page/services/VoiceCommunication.vue"), name: "VoiceCommunicationRouter" },
   { path: PATH.SERVICE.VOICE_COMMUNICATION_TWO_DEVICES, component: () => import("@/layouts/page/services/VoiceCommunicationTwoDevices.vue"), name: "VoiceCommunicationTwoDevicesRouter" },
+  { path: PATH.SERVICE.VOICE_CALL, component: () => import("@/layouts/page/services/VoiceCall.vue"), name: "VoiceCall" },
+  { path: PATH.SERVICE.VIDEO_CALL, component: () => import("@/layouts/page/services/VideoCall.vue"), name: "VideoCall" },
+  // { 
   // { 
   // path: "/classroom", component: ClassHome, name: "ClassHomeRouter" },
   // {
